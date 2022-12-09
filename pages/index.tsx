@@ -1,10 +1,8 @@
 import { NextPage } from 'next'
 import { SlArrowRight, SlArrowLeft } from 'react-icons/sl'
-import { motion, useScroll } from 'framer-motion'
+import { motion, useMotionValue, useScroll, useTransform } from 'framer-motion'
 import React, { useEffect, useRef } from 'react'
 import styled from "styled-components";
-import NameAnimation from '../components/NameAnimation'
-import GridAnimation from '../components/GridAnimation';
 import dynamic from 'next/dynamic';
 
 const IndexContainer = styled.div`
@@ -111,28 +109,81 @@ const IndexPage: NextPage = () => {
 
 	const txt = "#000"
 
-	const ref = useRef(null);
-
 	const {
-		NameAnimation,
+		NameAnimationMotion,
 		GridAnimation,
 	} = {
-		NameAnimation: dynamic(() => import('../components/NameAnimation'), { ssr: false }),
+		NameAnimationMotion: dynamic(() => import('../components/NameAnimation'), { ssr: false }),
 		GridAnimation: dynamic(() => import('../components/GridAnimation'), { ssr: false }),
 	}
 
-	const NameAnimationMotion = motion(NameAnimation, { forwardMotionProps: true });
+	const { scrollYProgress } = useScroll();
 
-	const { scrollY } = useScroll({
-		target: ref,
-		offset: ["start end", "end end"]
-	});
+	const yTransform = useTransform(
+		scrollYProgress,
+		// Map x from these values:
+		[0, 1],
+		// Into these values:
+		['0rem', '9rem']
+	)
+
+	const xTransform = useTransform(
+		scrollYProgress,
+		// Map x from these values:
+		[0, 1],
+		// Into these values:
+		['0rem', '-26rem']
+	)
+
+	const zTransform = useTransform(
+		scrollYProgress,
+		// Map x from these values:
+		[0, 1],
+		// Into these values:
+		['0px', '100px']
+	)
+
+	const heightTransform = useTransform(
+		scrollYProgress,
+		// Map x from these values:
+		[0, 1],
+		// Into these values:
+		['100vh', '0vh']
+	)
+
+	const widthTransform = useTransform(
+		scrollYProgress,
+		// Map x from these values:
+		[0, 1],
+		// Into these values:
+		['100vw', '0wh']
+	)
+
+	const zIndexTransform = useTransform(
+		scrollYProgress,
+		// Map x from these values:
+		[0, 1],
+		// Into these values:
+		[4, 10]
+	)
+
+	const scaler = useTransform(
+		scrollYProgress,
+		// Map x from these values:
+		[0, 1],
+		// Into these values:
+		[1, 0.7]
+	)
+
+	// const template = ({ x }) => {
+	// 	return `translateY(${x})`
+	// }
 
 	useEffect(() => {
-		return scrollY.onChange((latest) => {
+		return yTransform.onChange((latest) => {
 			console.log("Page scroll: ", latest)
 		})
-	}, [scrollY, NameAnimationMotion])
+	}, [scrollYProgress, yTransform, NameAnimationMotion])
 
 	return (
 		<>
@@ -140,9 +191,28 @@ const IndexPage: NextPage = () => {
 
 				<GridAnimation />
 
-				<IndexContainer>
-					<NameAnimationMotion ref={ref} />
-				</IndexContainer>
+
+				<motion.div style={{
+					translateY: yTransform,
+					translateX: xTransform,
+					translateZ: zTransform,
+					zIndex: zIndexTransform,
+					minHeight: heightTransform,
+					minWidth: widthTransform,
+					scale: scaler,
+					backgroundColor: 'transparent',
+					display: 'flex',
+					overflowX: 'hidden',
+					overflowY: 'auto',
+					position: 'relative',
+					pointerEvents: 'none',
+					alignContent: 'center',
+					flexWrap: 'wrap',
+					justifyContent: 'center',
+				}}>
+					<NameAnimationMotion />
+				</motion.div>
+
 
 				<ResumeLayoutDiv style={{ color: txt }}>
 					<HeaderContainer color={txt}>
