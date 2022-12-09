@@ -1,7 +1,7 @@
 import { NextPage } from 'next'
 import { SlArrowRight, SlArrowLeft } from 'react-icons/sl'
-import { motion, useMotionValue, useScroll, useTransform } from 'framer-motion'
-import React, { useEffect, useRef } from 'react'
+import { motion, useSpring, useScroll, useTransform } from 'framer-motion'
+import React, { useEffect } from 'react'
 import styled from "styled-components";
 import dynamic from 'next/dynamic';
 
@@ -118,9 +118,10 @@ const IndexPage: NextPage = () => {
 	}
 
 	const { scrollYProgress } = useScroll();
+	const springY = useSpring(scrollYProgress, { stiffness: 400, damping: 90, duration: 0.5 });
 
 	const yTransform = useTransform(
-		scrollYProgress,
+		springY,
 		// Map x from these values:
 		[0, 1],
 		// Into these values:
@@ -128,7 +129,7 @@ const IndexPage: NextPage = () => {
 	)
 
 	const xTransform = useTransform(
-		scrollYProgress,
+		springY,
 		// Map x from these values:
 		[0, 1],
 		// Into these values:
@@ -136,7 +137,7 @@ const IndexPage: NextPage = () => {
 	)
 
 	const zTransform = useTransform(
-		scrollYProgress,
+		springY,
 		// Map x from these values:
 		[0, 1],
 		// Into these values:
@@ -144,7 +145,7 @@ const IndexPage: NextPage = () => {
 	)
 
 	const heightTransform = useTransform(
-		scrollYProgress,
+		springY,
 		// Map x from these values:
 		[0, 1],
 		// Into these values:
@@ -152,7 +153,7 @@ const IndexPage: NextPage = () => {
 	)
 
 	const widthTransform = useTransform(
-		scrollYProgress,
+		springY,
 		// Map x from these values:
 		[0, 1],
 		// Into these values:
@@ -160,7 +161,7 @@ const IndexPage: NextPage = () => {
 	)
 
 	const zIndexTransform = useTransform(
-		scrollYProgress,
+		springY,
 		// Map x from these values:
 		[0, 1],
 		// Into these values:
@@ -168,7 +169,7 @@ const IndexPage: NextPage = () => {
 	)
 
 	const scaler = useTransform(
-		scrollYProgress,
+		springY,
 		// Map x from these values:
 		[0, 1],
 		// Into these values:
@@ -191,7 +192,6 @@ const IndexPage: NextPage = () => {
 
 				<GridAnimation />
 
-
 				<motion.div style={{
 					translateY: yTransform,
 					translateX: xTransform,
@@ -212,6 +212,7 @@ const IndexPage: NextPage = () => {
 				}}>
 					<NameAnimationMotion />
 				</motion.div>
+
 
 
 				<ResumeLayoutDiv style={{ color: txt }}>
