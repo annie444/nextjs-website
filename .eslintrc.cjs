@@ -5,7 +5,8 @@ module.exports = {
 		"next",
 		"next/core-web-vitals",
 		"plugin:react/recommended",
-		"plugin:react-hooks/recommended"
+		"plugin:react-hooks/recommended",
+		"prettier"
 	],
 	parser: '@typescript-eslint/parser',
 	plugins: [
@@ -13,5 +14,9 @@ module.exports = {
 		'react-hooks',
 		'react'
 	],
-	root: true,
+	"rules": {
+		"prefer-const": "error",
+		"@typescript-eslint/no-unused-vars": "error",
+		"@typescript-eslint/no-explicit-any": "error"
+	}
 };
