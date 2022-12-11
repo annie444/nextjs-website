@@ -5,7 +5,9 @@ specifiers:
   '@emotion/react': ^11.10.5
   '@emotion/styled': ^11.10.5
   '@mdx-js/loader': ^2.1.5
+  '@mdx-js/react': ^2.1.5
   '@next/eslint-plugin-next': ^13.0.6
+  '@next/mdx': ^13.0.6
   '@styled-icons/material': ^10.46.0
   '@swc/cli': ^0.1.57
   '@swc/core': ^1.3.21
@@ -41,6 +43,8 @@ specifiers:
 dependencies:
   '@chakra-ui/react': 2.4.3_366jsnbj2fqgpp64v3qddukxli
   '@mdx-js/loader': 2.1.5_webpack@5.75.0
+  '@mdx-js/react': 2.1.5_react@18.2.0
+  '@next/mdx': 13.0.6_wuv4qx5dshjptmdbtsqqkih5iu
   next: 13.0.6_kzvotn2zipzqwaptii5a7wxu3y
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
@@ -1575,6 +1579,16 @@ packages:
       - supports-color
     dev: false
 
+  /@mdx-js/react/2.1.5_react@18.2.0:
+    resolution: {integrity: sha512-3Az1I6SAWA9R38rYjz5rXBrGKeZhq96CSSyQtqY+maPj8stBsoUH5pNcmIixuGkufYsh8F5+ka2CVPo2fycWZw==}
+    peerDependencies:
+      react: '>=16'
+    dependencies:
+      '@types/mdx': 2.0.3
+      '@types/react': 18.0.26
+      react: 18.2.0
+    dev: false
+
   /@motionone/animation/10.15.1:
     resolution: {integrity: sha512-mZcJxLjHor+bhcPuIFErMDNyrdb2vJur8lSfMCsuCB4UyV8ILZLvK+t+pg56erv8ud9xQGK/1OGPt10agPrCyQ==}
     dependencies:
@@ -1625,6 +1639,17 @@ packages:
     dependencies:
       glob: 7.1.7
     dev: true
+
+  /@next/mdx/13.0.6_wuv4qx5dshjptmdbtsqqkih5iu:
+    resolution: {integrity: sha512-iR6DLMwB9ZUo5/C0EWByFMftjnPrYWfSwcw+OPo/be2F9yRmiZfuftyhlqgDDoOTDgubwkFhA2SogYUWATvGbQ==}
+    peerDependencies:
+      '@mdx-js/loader': '>=0.15.0'
+      '@mdx-js/react': '*'
+    dependencies:
+      '@mdx-js/loader': 2.1.5_webpack@5.75.0
+      '@mdx-js/react': 2.1.5_react@18.2.0
+      source-map: 0.7.4
+    dev: false
 
   /@next/swc-android-arm-eabi/13.0.6:
     resolution: {integrity: sha512-FGFSj3v2Bluw8fD/X+1eXIEB0PhoJE0zfutsAauRhmNpjjZshLDgoXMWm1jTRL/04K/o9gwwO2+A8+sPVCH1uw==}

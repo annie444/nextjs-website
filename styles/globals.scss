@@ -208,68 +208,38 @@ html {
 			@include text-effect-simple();
 		}
 
+		.nav__item{
+			font-size: 18pt;
+			position: relative;
+			transition: all 0.2s;
+			padding: 2px 20px
+		}
+
+		.nav__item:hover{
+			font-weight: bold;
+		}
+
+		.active {
+			background-color: $g1;
+			color: $g2;
+			transition: all 0.2s;
+		}
+
+		@media screen and (min-width: 768px) {
+			.nav__item::before{
+				content: '';
+				position: absolute;
+				transition: all 0.2s;
+			}
+
+			.nav__item:hover:before{
+			 width: 100%;
+			}
+		}
+
+
 		* {
 			box-sizing: border-box;
 		}
 	}
-}
-
-@mixin dots($count) {
-  $text-shadow: ();
-  @for $i from 0 through $count {
-    $text-shadow: $text-shadow,
-                 (-.5+(random()) * 3) + em
-                 (-.5+(random()) * 3) + em
-                 2px
-                 hsla(random() * 360, 100%, 50%,.9);
-  }
-  text-shadow: $text-shadow;
-}
-
-div#backgroundContainer {
-  overflow: hidden;
-	height: 100%;
-	width: 100%;
-	position: fixed;
-}
-
-div#backgroundImage {
-  display: block;
-  font-size: 100px;
-  color: transparent;
-}
-
-
-div#backgroundImage::before, div#backgroundImage::after {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  width: 3em;
-  height: 3em;
-  content: '.';
-  mix-blend-mode: screen;
-  animation: 44s -27s move infinite ease-in-out alternate;
-}
-
-
-div#backgroundImage::before {
-  @include dots(40);
-  animation-duration: 44s;
-  animation-delay: -27s;
-}
-
-div#backgroundImage::after {
-  @include dots(40);
-  animation-duration: 43s;
-  animation-delay: -32s;
-}
-
-
-@keyframes move {
-  from {
-    transform: rotate(0deg) scale(12) translateX(-20px);
-  }
-  to {
-    transform: rotate(360deg) scale(18) translateX(20px);
-  }
 }
