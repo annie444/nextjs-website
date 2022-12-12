@@ -4,11 +4,6 @@
 /node_modules
 /.pnp
 .pnp.js
-.eslintrc.cjs
-.npmrc
-.prettirrc.json
-/.husky/
-.vscode
 
 # testing
 /coverage
@@ -40,4 +35,3 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 pnpm-lock.yaml
-.eslintrc.cjs
