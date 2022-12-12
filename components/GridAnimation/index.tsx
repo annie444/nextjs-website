@@ -22,7 +22,7 @@ export default function GridAnimation(): JSX.Element {
     })
   )
 
-  const createGrid = () => {
+  const createGrid = useCallback(() => {
     setColumns(Math.floor(window.innerWidth / 50))
     setRows(Math.floor(window.innerHeight / 50))
     setTotal(
@@ -44,16 +44,12 @@ export default function GridAnimation(): JSX.Element {
         }
       })
     )
-  }
-
-  const memoizedGrid = useCallback(() => {
-    createGrid()
-  }, [])
+  }, [columns, rows])
 
   useEffect(() => {
     createGrid()
     window.addEventListener('resize', createGrid)
-  }, [memoizedGrid])
+  }, [createGrid])
 
   return (
     <>

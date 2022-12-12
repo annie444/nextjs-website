@@ -2,6 +2,10 @@
   "name": "personal-website",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": ">=16",
+    "pnpm": ">=7"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -26,6 +30,10 @@
   "main": "next.config.js",
   "author": "Analetta Ehler",
   "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/annie444/nextjs-website/issues"
+  },
+  "homepage": "https://github.com/annie444/nextjs-website#readme",
   "devDependencies": {
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
