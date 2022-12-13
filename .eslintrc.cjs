@@ -6,13 +6,16 @@ module.exports = {
 		"next/core-web-vitals",
 		"plugin:react/recommended",
 		"plugin:react-hooks/recommended",
-		"prettier"
+		"prettier",
+		"plugin:mdx/recommended"
 	],
 	parser: '@typescript-eslint/parser',
 	plugins: [
 		'@typescript-eslint',
 		'react-hooks',
-		'react'
+		'react',
+		'mdx',
+		'prettier'
 	],
 	"rules": {
 		"prefer-const": "error",
