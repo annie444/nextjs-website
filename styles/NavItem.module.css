@@ -1,0 +1,28 @@
+.nav-item{
+	font-size: 18pt;
+	position: relative;
+	transition: all 0.2s;
+	padding: 2px 20px
+}
+
+.nav-item:hover{
+	font-weight: bold;
+}
+
+.active {
+	background-color: $g1;
+	color: $g2;
+	transition: all 0.2s;
+}
+
+@media screen and (min-width: 768px) {
+	.nav-item::before{
+		content: '';
+		position: absolute;
+		transition: all 0.2s;
+	}
+
+	.nav-item:hover:before{
+	 width: 100%;
+	}
+}

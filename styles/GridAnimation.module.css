@@ -1,0 +1,11 @@
+.grid-container {
+	width: 100vw;
+	height: 100vh;
+	display: grid;
+	position: fixed;
+	grid-gap: 1px;
+	align-content: center;
+	z-index: 1;
+	background-color: transparent;
+	justify-content: center;
+}

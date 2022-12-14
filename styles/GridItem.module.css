@@ -1,0 +1,11 @@
+.grid-item {
+	min-width: 100%;
+	min-height: 100%;
+	cursor: pointer;
+	position: relative;
+	z-index: 1;
+}
+
+.grid-item:hover {
+		opacity: 0.8;
+	}
