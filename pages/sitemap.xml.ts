@@ -2,14 +2,12 @@ import fetch from 'isomorphic-unfetch'
 import { NextApiResponse } from 'next'
 //import Cors from 'cors'
 
-const url = `http://localhost:3000`
-
 export const getServerSideProps = async ({ res }: { res: NextApiResponse }) => {
   // We make an API call to gather the URLs for our site
   // Fetch our JSON file
-  const posts = await fetch(`${url}/cache/resume.json`).then((res) =>
-    res.json()
-  )
+  const posts = await fetch(
+    `${process.env.SITEMAP_URL}/cache/resume.json`
+  ).then((res) => res.json())
   // Do something with your data!
   const sitemap = generateSiteMap(posts)
   res.setHeader('Content-Type', 'text/xml')
@@ -36,7 +34,7 @@ function generateSiteMap(posts: { slug: string }[]) {
        .map(({ slug }: { slug: string }) => {
          return `
        <url>
-           <loc>${`${url}/${slug}`}</loc>
+           <loc>${`${process.env.SITEMAP_URL}/${slug}`}</loc>
        </url>
      `
        })

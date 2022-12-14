@@ -3,8 +3,6 @@ import fetch from 'isomorphic-unfetch'
 import styles from '../styles/layout.module.css'
 import { Navbar } from '../components/NavBar'
 
-const url = `http://localhost:3000`
-
 interface Post {
   slug?: string
   title?: string
@@ -25,7 +23,7 @@ export default function Page({ pages }: { pages: Post[] }) {
 }
 
 export async function getStaticProps() {
-  const pages = await fetch(`${url}/api/resume`)
+  const pages = await fetch(`${process.env.API_URL}/resume`)
     .then((res) => res.json())
     .catch(() => null)
 

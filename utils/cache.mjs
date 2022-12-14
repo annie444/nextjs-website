@@ -64,6 +64,6 @@ async function main() {
   // Create our cached posts JSON
   fs.writeFile('public/cache/resume.json', postFileContents, (err) => {
     if (err) return console.log(err)
-    console.log('Posts cached.')
+    console.log('Resume cache created')
   })
 }
