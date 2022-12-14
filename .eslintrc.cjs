@@ -6,7 +6,7 @@ module.exports = {
 		"next/core-web-vitals",
 		"plugin:react/recommended",
 		"plugin:react-hooks/recommended",
-		"prettier",
+		"plugin:prettier/recommended",
 		"plugin:mdx/recommended"
 	],
 	parser: '@typescript-eslint/parser',
@@ -20,6 +20,7 @@ module.exports = {
 	"rules": {
 		"prefer-const": "error",
 		"@typescript-eslint/no-unused-vars": "error",
-		"@typescript-eslint/no-explicit-any": "error"
+		"@typescript-eslint/no-explicit-any": "error",
+		"prettier/prettier": "error"
 	}
 };
