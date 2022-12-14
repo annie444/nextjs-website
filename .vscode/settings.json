@@ -2,6 +2,14 @@
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true
   },
+  "markdownlint.run": "onSave",
+  "markdownlint.config": {
+    "default": true,
+    "no-hard-tabs": false,
+    "MD024": false,
+    "MD025": false,
+    "MD041": false
+  },
   "eslint.options": {
     "extensions": [".js", ".jsx", ".md", ".mdx", ".ts", ".tsx"]
   },
