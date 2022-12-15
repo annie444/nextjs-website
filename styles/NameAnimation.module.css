@@ -1,0 +1,9 @@
+.path {
+	stroke: #000;
+}
+
+@media (prefers-color-scheme: dark) {
+	.path {
+		stroke: #fff;
+	}
+}

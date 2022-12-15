@@ -56,3 +56,12 @@
 	border-left: 1px solid #000;
 	text-transform: capitalize;
 }
+
+@media (prefers-color-scheme: dark) {
+	.nav-area {
+		border-left: 1px solid #fff;
+	}
+	.header-container {
+		border: 1px solid #fff;
+	}
+}

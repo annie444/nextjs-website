@@ -62,7 +62,6 @@ export const GridItem = (props: propsType): JSX.Element => {
             id={item.id.toString()}
             key={item.i}
             onClick={clickHandler}
-            style={{ backgroundColor: '#fff' }}
           ></div>
         )
       })}

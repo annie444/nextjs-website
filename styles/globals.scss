@@ -87,6 +87,10 @@
 		-webkit-animation: text-shadow-drop-tl 0.6s both;
 		animation: text-shadow-drop-tl 0.6s both;
 
+	@media (prefers-color-scheme: dark) {
+		color: white;
+	}
+
 	&:hover {
 		-webkit-animation: text-shadow-pop-tl 0.6s both;
 		animation: text-shadow-pop-tl 0.6s both;
@@ -169,6 +173,10 @@
 	-webkit-animation: text-shadow-drop-tl 0.6s both;
 	animation: text-shadow-drop-tl 0.6s both;
 
+	@media (prefers-color-scheme: dark) {
+		color: white;
+	}
+
 	&:hover {
 		-webkit-animation: text-shadow-pop-tl 0.6s both;
 		animation: text-shadow-pop-tl 0.6s both;
@@ -205,11 +213,11 @@ a {
 }
 
 @media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
-  body {
-    color: white;
-    background: black;
-  }
+	body {
+		background: linear-gradient(to right, $g1, $g2, $g3, $g2, $g1);
+	}
+
+	* {
+		color: white;
+	}
 }

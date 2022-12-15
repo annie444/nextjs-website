@@ -2,6 +2,7 @@ import { useEffect, useRef } from 'react'
 import React from 'react'
 import anime from 'animejs'
 import { motion } from 'framer-motion'
+import styles from '../styles/NameAnimation.module.css'
 
 interface Props {
   children?: React.ReactNode
@@ -14,8 +15,6 @@ const NameAnimation = React.forwardRef<SVGSVGElement, Props>((props, ref) => {
   scale = scale || 1
 
   const svgEl = useRef(null)
-
-  const color = '#000'
 
   useEffect(() => {
     const name = svgEl.current
@@ -69,10 +68,10 @@ const NameAnimation = React.forwardRef<SVGSVGElement, Props>((props, ref) => {
               fontWeight: 300,
               fontFamily: 'Cascadia Code PL',
               fill: 'none',
-              stroke: color,
               strokeOpacity: 1,
               paintOrder: 'markers fill stroke',
             }}
+            className={styles['path']}
             id="path351"
           />
           <path
@@ -82,9 +81,9 @@ const NameAnimation = React.forwardRef<SVGSVGElement, Props>((props, ref) => {
               fontWeight: 300,
               fontFamily: 'Cascadia Code PL',
               fill: 'none',
-              stroke: color,
               strokeOpacity: 1,
             }}
+            className={styles['path']}
             id="path353"
           />
           <path
@@ -94,9 +93,9 @@ const NameAnimation = React.forwardRef<SVGSVGElement, Props>((props, ref) => {
               fontWeight: 300,
               fontFamily: 'Cascadia Code PL',
               fill: 'none',
-              stroke: color,
               strokeOpacity: 1,
             }}
+            className={styles['path']}
             id="path355"
           />
           <path
@@ -106,9 +105,9 @@ const NameAnimation = React.forwardRef<SVGSVGElement, Props>((props, ref) => {
               fontWeight: 300,
               fontFamily: 'Cascadia Code PL',
               fill: 'none',
-              stroke: color,
               strokeOpacity: 1,
             }}
+            className={styles['path']}
             id="path357"
           />
           <path
@@ -118,9 +117,9 @@ const NameAnimation = React.forwardRef<SVGSVGElement, Props>((props, ref) => {
               fontWeight: 300,
               fontFamily: 'Cascadia Code PL',
               fill: 'none',
-              stroke: color,
               strokeOpacity: 1,
             }}
+            className={styles['path']}
             id="path359"
           />
           <path
@@ -130,9 +129,9 @@ const NameAnimation = React.forwardRef<SVGSVGElement, Props>((props, ref) => {
               fontWeight: 300,
               fontFamily: 'Cascadia Code PL',
               fill: 'none',
-              stroke: color,
               strokeOpacity: 1,
             }}
+            className={styles['path']}
             id="path361"
           />
           <path
@@ -142,9 +141,9 @@ const NameAnimation = React.forwardRef<SVGSVGElement, Props>((props, ref) => {
               fontWeight: 300,
               fontFamily: 'Cascadia Code PL',
               fill: 'none',
-              stroke: color,
               strokeOpacity: 1,
             }}
+            className={styles['path']}
             id="path363"
           />
           <path
@@ -154,9 +153,9 @@ const NameAnimation = React.forwardRef<SVGSVGElement, Props>((props, ref) => {
               fontWeight: 300,
               fontFamily: 'Cascadia Code PL',
               fill: 'none',
-              stroke: color,
               strokeOpacity: 1,
             }}
+            className={styles['path']}
             id="path365"
           />
           <path
@@ -166,9 +165,9 @@ const NameAnimation = React.forwardRef<SVGSVGElement, Props>((props, ref) => {
               fontWeight: 300,
               fontFamily: 'Cascadia Code PL',
               fill: 'none',
-              stroke: color,
               strokeOpacity: 1,
             }}
+            className={styles['path']}
             id="path367"
           />
           <path
@@ -178,9 +177,9 @@ const NameAnimation = React.forwardRef<SVGSVGElement, Props>((props, ref) => {
               fontWeight: 300,
               fontFamily: 'Cascadia Code PL',
               fill: 'none',
-              stroke: color,
               strokeOpacity: 1,
             }}
+            className={styles['path']}
             id="path369"
           />
           <path
@@ -190,9 +189,9 @@ const NameAnimation = React.forwardRef<SVGSVGElement, Props>((props, ref) => {
               fontWeight: 300,
               fontFamily: 'Cascadia Code PL',
               fill: 'none',
-              stroke: color,
               strokeOpacity: 1,
             }}
+            className={styles['path']}
             id="path371"
           />
           <path
@@ -202,9 +201,9 @@ const NameAnimation = React.forwardRef<SVGSVGElement, Props>((props, ref) => {
               fontWeight: 300,
               fontFamily: 'Cascadia Code PL',
               fill: 'none',
-              stroke: color,
               strokeOpacity: 1,
             }}
+            className={styles['path']}
             id="path373"
           />
           <path
@@ -214,9 +213,9 @@ const NameAnimation = React.forwardRef<SVGSVGElement, Props>((props, ref) => {
               fontWeight: 300,
               fontFamily: 'Cascadia Code PL',
               fill: 'none',
-              stroke: color,
               strokeOpacity: 1,
             }}
+            className={styles['path']}
             id="path375"
           />
           <path
@@ -226,9 +225,9 @@ const NameAnimation = React.forwardRef<SVGSVGElement, Props>((props, ref) => {
               fontWeight: 300,
               fontFamily: 'Cascadia Code PL',
               fill: 'none',
-              stroke: color,
               strokeOpacity: 1,
             }}
+            className={styles['path']}
             id="path377"
           />
           <path
@@ -238,9 +237,9 @@ const NameAnimation = React.forwardRef<SVGSVGElement, Props>((props, ref) => {
               fontWeight: 300,
               fontFamily: 'Cascadia Code PL',
               fill: 'none',
-              stroke: color,
               strokeOpacity: 1,
             }}
+            className={styles['path']}
             id="path379"
           />
           <path
@@ -250,9 +249,9 @@ const NameAnimation = React.forwardRef<SVGSVGElement, Props>((props, ref) => {
               fontWeight: 300,
               fontFamily: 'Cascadia Code PL',
               fill: 'none',
-              stroke: color,
               strokeOpacity: 1,
             }}
+            className={styles['path']}
             id="path381"
           />
           <path
@@ -262,9 +261,9 @@ const NameAnimation = React.forwardRef<SVGSVGElement, Props>((props, ref) => {
               fontWeight: 300,
               fontFamily: 'Cascadia Code PL',
               fill: 'none',
-              stroke: color,
               strokeOpacity: 1,
             }}
+            className={styles['path']}
             id="path383"
           />
           <path
@@ -274,9 +273,9 @@ const NameAnimation = React.forwardRef<SVGSVGElement, Props>((props, ref) => {
               fontWeight: 300,
               fontFamily: 'Cascadia Code PL',
               fill: 'none',
-              stroke: color,
               strokeOpacity: 1,
             }}
+            className={styles['path']}
             id="path385"
           />
           <path
@@ -286,9 +285,9 @@ const NameAnimation = React.forwardRef<SVGSVGElement, Props>((props, ref) => {
               fontWeight: 300,
               fontFamily: 'Cascadia Code PL',
               fill: 'none',
-              stroke: color,
               strokeOpacity: 1,
             }}
+            className={styles['path']}
             id="path387"
           />
           <path
@@ -298,9 +297,9 @@ const NameAnimation = React.forwardRef<SVGSVGElement, Props>((props, ref) => {
               fontWeight: 300,
               fontFamily: 'Cascadia Code PL',
               fill: 'none',
-              stroke: color,
               strokeOpacity: 1,
             }}
+            className={styles['path']}
             id="path389"
           />
           <path
@@ -310,9 +309,9 @@ const NameAnimation = React.forwardRef<SVGSVGElement, Props>((props, ref) => {
               fontWeight: 300,
               fontFamily: 'Cascadia Code PL',
               fill: 'none',
-              stroke: color,
               strokeOpacity: 1,
             }}
+            className={styles['path']}
             id="path391"
           />
         </g>

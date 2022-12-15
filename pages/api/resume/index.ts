@@ -24,7 +24,7 @@ interface Post {
  * Returns a list of paginated posts
  */
 const posts = async (req: NextApiRequest, res: NextApiResponse) => {
-  const data = await getAllPosts()
+  const data = await getAllPosts().then((res) => res)
   const mappedData = data.map((post: Post) => {
     return {
       slug: post.slug ?? '',

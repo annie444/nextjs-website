@@ -2,7 +2,7 @@ import React from 'react'
 import { useRef, useEffect } from 'react'
 import styles from '../styles/layout.module.css'
 import { NameAnimationMotion } from './NameAnimation'
-import { GridAnimation } from './GridAnimation'
+import dynamic from 'next/dynamic'
 import {
   motion,
   useScroll,
@@ -78,6 +78,13 @@ export const Layout = ({ children }: { children: React.ReactNode }) => {
     [1, 0.6],
     // Into these values:
     [0, 1]
+  )
+
+  const GridAnimation = dynamic(
+    () => import('./GridAnimation').then((mod) => mod.GridAnimation),
+    {
+      ssr: false,
+    }
   )
 
   const yTemplate = useMotionTemplate`calc(${yTransform} + ${NameAnimationTransform}px)`
