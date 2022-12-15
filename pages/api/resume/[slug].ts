@@ -24,8 +24,9 @@ export const getAllPosts = async () => {
 /**
  * Finds and returns a single post
  */
-const post = async (req: NextApiRequest, res: NextApiResponse) => {
-  const { slug } = req.query
+
+export default async (req: NextApiRequest, res: NextApiResponse) => {
+  const { slug } = req.query as { slug: string }
   const data = (await getAllPosts()).find(
     (page: { slug: string }) => page.slug === slug
   )
@@ -36,5 +37,3 @@ const post = async (req: NextApiRequest, res: NextApiResponse) => {
     res.end()
   }
 }
-
-export default post
