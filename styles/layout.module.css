@@ -1,9 +1,7 @@
 .resume-layout {
-	height: 100vh;
+	min-height: 100vh;
   width: 100vw;
   background-color: transparent;
-  overflow-x: hidden;
-  overflow-y: auto;
   z-index: 3;
   position: relative;
   pointer-events: none;
@@ -13,15 +11,14 @@
 .header-container {
 	height: 8rem;
   width: 100%;
-  background-color: transparent;
-  overflow: hidden;
-  display: flex;
-  flex-direction: row;
-  wrap: nowrap;
+  background-color: white;
+	opacity: 0.9;
   z-index: 3;
-  position: relative;
+  position: sticky;
+	top: 0px;
   pointer-events: none;
 	border: 1px solid #000;
+	height: 8rem;
 }
 
 .main-container {
@@ -30,9 +27,7 @@
   background-color: transparent;
   display: flex;
   flex-direction: row;
-  wrap: nowrap;
-  overflow: visible;
-  z-index: 3;
+  z-index: 2;
   position: relative;
   pointer-events: none;
 }
@@ -45,17 +40,19 @@
   justify-content: flex-start;
   align-items: flex-start;
   overflow: visible;
-	border: 1px solid #000;
-	border-top: none;
 }
 
-.main-left {
-	height: 100%;
-  display: flex;
-  width: 20%;
-  flex-direction: column;
-  justify-content: space-evenly;
-  align-items: flex-end;
-  border: 1px solid #000;
-  border-top: none;
+.nav-area {
+	height: calc(100vh - 8rem - 2px);
+	display: flex;
+	width: 20%;
+	flex-direction: column;
+	justify-content: space-evenly;
+	align-items: center;
+	overflow: visible;
+	position: sticky;
+	top: 8rem;
+	background: transparent;
+	border-left: 1px solid #000;
+	text-transform: capitalize;
 }
