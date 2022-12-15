@@ -25,10 +25,6 @@ interface Post {
  */
 const posts = async (req: NextApiRequest, res: NextApiResponse) => {
   const data = await getAllPosts()
-  const { query } = req.body as { query: string }
-  const json = JSON.parse(query)
-  const { slug } = json as { slug: string }
-  res.send(slug)
   const mappedData = data.map((post: Post) => {
     return {
       slug: post.slug ?? '',
@@ -39,6 +35,7 @@ const posts = async (req: NextApiRequest, res: NextApiResponse) => {
     }
   })
   res.status(200).json(mappedData)
+  res.end()
 }
 
 export default posts
