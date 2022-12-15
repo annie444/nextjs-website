@@ -53,7 +53,7 @@ export const Layout = ({ children }: { children: React.ReactNode }) => {
     // Map x from these values:
     [1, 0],
     // Into these values:
-    ['0vh', '60vh']
+    ['0vh', '56vh']
   )
 
   const zIndexTransform = useTransform(
