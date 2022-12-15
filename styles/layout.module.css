@@ -5,7 +5,6 @@
   z-index: 3;
   position: relative;
   pointer-events: none;
-  font-size: 1.6rem;
 }
 
 .header-container {
@@ -35,7 +34,7 @@
 .main-area {
 	height: 100%;
   display: flex;
-  width: 80%;
+	width: calc( 80% - 8rem );
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;

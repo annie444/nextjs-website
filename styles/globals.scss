@@ -84,8 +84,9 @@
 	pointer-events: none;
 	font-family: Verdana, Geneva, Tahoma, sans-serif;
 	color: black;
-		-webkit-animation: text-shadow-drop-tl 0.6s both;
-		animation: text-shadow-drop-tl 0.6s both;
+	-webkit-animation: text-shadow-drop-tl 0.6s both;
+	animation: text-shadow-drop-tl 0.6s both;
+	font-weight: 300;
 
 	@media (prefers-color-scheme: dark) {
 		color: white;
@@ -172,6 +173,7 @@
 	color: black;
 	-webkit-animation: text-shadow-drop-tl 0.6s both;
 	animation: text-shadow-drop-tl 0.6s both;
+	font-weight: 300;
 
 	@media (prefers-color-scheme: dark) {
 		color: white;
@@ -203,7 +205,48 @@ body {
 	overflow-x: hidden;
 	overflow-y: auto;
 	font-family: Verdana, Geneva, Tahoma, sans-serif;
+	font-weight: 300;
 	margin: 0;
+}
+
+p ul li {
+	font-size: 12pt;
+	font-family: Verdana, Geneva, Tahoma, sans-serif;
+	font-weight: 300;
+	font-style: normal;
+	color: #000
+}
+
+h1 {
+	font-size: 24pt;
+	font-family: Verdana, Geneva, Tahoma, sans-serif;
+	font-style: normal;
+	font-weight: 400;
+	color: #000
+}
+
+h2 {
+	font-size: 20pt;
+	font-family: Verdana, Geneva, Tahoma, sans-serif;
+	font-style: normal;
+	font-weight: 300;
+	color: #000
+}
+
+h3 {
+	font-size: 18pt;
+	font-family: Verdana, Geneva, Tahoma, sans-serif;
+	font-style: italic;
+	font-weight: 200;
+	color: #000
+}
+
+h4 {
+	font-size: 12pt;
+	font-family: Verdana, Geneva, Tahoma, sans-serif;
+	font-weight: bold;
+	font-style: normal;
+	color: #000
 }
 
 a {
@@ -218,6 +261,9 @@ a {
 	}
 
 	* {
+		color: white;
+	}
+	p ul li h1 h2 h3 h4 {
 		color: white;
 	}
 }

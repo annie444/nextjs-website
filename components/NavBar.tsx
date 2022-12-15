@@ -27,7 +27,7 @@ export const Navbar = ({ pages }: { pages: Post[] }): JSX.Element => {
         >
           <NavItem
             active={activeIdx === idx}
-            text={page.slug ?? 'No Title'}
+            text={page.title ?? page.slug ?? 'No Title'}
             href={`${encodeURIComponent(page.slug ?? '')}`}
           />
         </div>
