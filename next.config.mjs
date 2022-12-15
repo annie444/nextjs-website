@@ -2,6 +2,7 @@
 
 import nextMDX from '@next/mdx'
 import remarkGfm from 'remark-gfm'
+import path from 'path'
 
 const withMDX = nextMDX({
   // By default only the .mdx extension is supported.
@@ -15,4 +16,7 @@ const withMDX = nextMDX({
 
 export default withMDX({
   reactStrictMode: true,
+  sassOptions: {
+    includePaths: [path.join(process.cwd(), 'styles')],
+  },
 })

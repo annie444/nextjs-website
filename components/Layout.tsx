@@ -89,6 +89,10 @@ export const Layout = ({ children }: { children: React.ReactNode }) => {
 
   const yTemplate = useMotionTemplate`calc(${yTransform} + ${NameAnimationTransform}px)`
 
+  const handleHamburgerClick = () => {
+    document.getElementById('NavBar')?.classList.toggle('nav-on')
+  }
+
   return (
     <>
       <GridAnimation />
@@ -122,7 +126,15 @@ export const Layout = ({ children }: { children: React.ReactNode }) => {
           opacity: opacityTransform,
         }}
       >
-        <div ref={ResumeRef} className={styles['header-container']}></div>
+        <div ref={ResumeRef} className={styles['header-container']}>
+          <label
+            htmlFor="checkbox_toggle"
+            onClick={handleHamburgerClick}
+            className="hamburger"
+          >
+            &#9776;
+          </label>
+        </div>
         <div ref={MainContainerRef} className={styles['main-container']}>
           {children}
         </div>
