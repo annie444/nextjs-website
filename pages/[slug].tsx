@@ -66,9 +66,7 @@ export const getStaticProps = async (context: {
   locales?: Array<string>
   defaultLocale?: string
 }) => {
-  const post = await fetch(
-    `${process.env.API_URL}/resume/${context?.params.slug}`
-  )
+  const post = await fetch(`${url}/api/resume/${context?.params.slug}`)
     .then((res) => res.json())
     .catch(() => null)
 

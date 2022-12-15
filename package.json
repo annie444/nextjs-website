@@ -70,10 +70,11 @@
   "name": "personal-website",
   "private": true,
   "scripts": {
-    "build": "node utils/cache.mjs && next build",
+    "build": "node util/cache.mjs && next build",
     "dev": "next dev",
     "lint": "next lint",
-    "start": "next start"
+    "start": "next start",
+    "prepare": "husky install"
   },
   "version": "0.1.0"
 }
