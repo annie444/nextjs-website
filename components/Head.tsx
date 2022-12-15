@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function Head() {
+export const Head = () => {
   return (
     <>
       <title>Annie Ehler</title>

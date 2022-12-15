@@ -1,8 +1,8 @@
 import React from 'react'
 import { useRef, useEffect } from 'react'
 import styles from '../styles/layout.module.css'
-import { NameAnimationMotion } from '../components/NameAnimation'
-import { GridAnimation } from '../components/GridAnimation'
+import { NameAnimationMotion } from './NameAnimation'
+import { GridAnimation } from './GridAnimation'
 import {
   motion,
   useScroll,
@@ -12,11 +12,7 @@ import {
   useMotionValue,
 } from 'framer-motion'
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+export const Layout = ({ children }: { children: React.ReactNode }) => {
   const ResumeRef = useRef(null)
   const MainContainerRef = useRef(null)
   const { scrollYProgress } = useScroll({
@@ -50,7 +46,7 @@ export default function RootLayout({
     return () => {
       unsubWF()
     }
-  }, [WindowFollower])
+  }, [WindowFollower, NameAnimationTransform, lastUpdate, springY])
 
   const yTransform = useTransform(
     springY,
