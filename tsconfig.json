@@ -14,11 +14,11 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
-		"baseUrl": ".",
+    "baseUrl": ".",
     "paths": {
-        "app/*": ["app/*"],
-        "config/*": ["app/_config/*"],
-        "shared/*": ["app/_shared/*"],
+      "app/*": ["app/*"],
+      "config/*": ["app/_config/*"],
+      "shared/*": ["app/_shared/*"]
     },
     "plugins": [
       {
@@ -26,6 +26,14 @@
       }
     ]
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "lib/cache.mjs", "app/sitemap.xml.ts"],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts",
+    "lib/cache.mjs",
+    "app/sitemap.xml.ts",
+    "newrelic.js"
+  ],
   "exclude": ["node_modules"]
 }

@@ -1,14 +1,25 @@
 import { NextApiRequest, NextApiResponse } from 'next'
+// import { createClient } from '@supabase/supabase-js'
+
+const url = 'https://annieehler.com'
 
 /**
  * fetches and returns all posts from json cache
  */
 export const getAllPosts = async () => {
-  const data = await fetch(`${process.env.SITEMAP_URL}/cache/resume.json`).then(
-    (res) => res.json()
-  )
+  const data = await fetch(`${url}/cache/resume.json`).then((res) => res.json())
   return data
 }
+
+// export const trySupabase = async () => {
+//   const supabase = createClient(
+//     <string>process.env.SUPABASE_URL,
+//     <string>process.env.SERVICE_KEY
+//   )
+//   const { data, error } = await supabase.storage
+//     .from('resume')
+//     .download('public/avatar1.png')
+// }
 
 /**
  * Finds and returns a single post

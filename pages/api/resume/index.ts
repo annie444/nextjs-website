@@ -2,13 +2,13 @@ import { NextApiRequest, NextApiResponse } from 'next'
 
 // You'll need to specify the absolute URL to fetch your file
 
+const url = 'https://annieehler.com'
+
 /**
  * fetches and returns all posts from json cache
  */
 export const getAllPosts = async () => {
-  const data = await fetch(`${process.env.SITEMAP_URL}/cache/resume.json`).then(
-    (res) => res.json()
-  )
+  const data = await fetch(`${url}/cache/resume.json`).then((res) => res.json())
   return data
 }
 

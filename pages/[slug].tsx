@@ -3,6 +3,8 @@ import React from 'react'
 import styles from '../styles/layout.module.css'
 import { Navbar } from '../components/NavBar'
 
+const url = 'https://annieehler.com'
+
 interface Params {
   slug: string
 }
@@ -70,7 +72,7 @@ export const getStaticProps = async (context: {
     .then((res) => res.json())
     .catch(() => null)
 
-  const pages = await fetch(`${process.env.API_URL}/resume`)
+  const pages = await fetch(`${url}/api/resume`)
     .then((res) => res.json())
     .catch(() => null)
 
