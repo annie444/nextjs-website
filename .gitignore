@@ -35,5 +35,5 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 pnpm-lock.yaml
-public/cache/resume.json
+/public/cache/*
 newrelic.js
