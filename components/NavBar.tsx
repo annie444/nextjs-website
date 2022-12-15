@@ -3,7 +3,7 @@ import { NavItem } from './NavItem'
 import React from 'react'
 
 interface Post {
-  slug?: string
+  slug: string
   title?: string
   description?: string
   date?: string
@@ -27,7 +27,7 @@ export const Navbar = ({ pages }: { pages: Post[] }): JSX.Element => {
         >
           <NavItem
             active={activeIdx === idx}
-            text={page.title ?? page.slug ?? 'No Title'}
+            text={page.title ?? page.slug}
             href={`${encodeURIComponent(page.slug ?? '')}`}
           />
         </div>

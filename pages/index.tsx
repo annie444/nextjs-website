@@ -6,7 +6,7 @@ import { Navbar } from '../components/NavBar'
 const url = 'https://annieehler.com'
 
 interface Post {
-  slug?: string
+  slug: string
   title?: string
   description?: string
   date?: string
@@ -17,7 +17,7 @@ export default function Page({ pages }: { pages: Post[] }) {
   return (
     <>
       <div className={styles['main-area']}></div>
-      <div className={styles['nav-area']}>
+      <div className="nav-area" id="NavBar">
         <Navbar pages={pages} />
       </div>
     </>

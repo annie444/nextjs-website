@@ -36,7 +36,7 @@ interface Post {
 }
 
 interface Page {
-  slug?: string
+  slug: string
   title?: string
   description?: string
   date?: string
@@ -51,7 +51,7 @@ export default function Page({ post, pages }: { post: Post; pages: Page[] }) {
           <MDXRemote {...(post?.source ?? post?.mdx)} />
         </MDXProvider>
       </div>
-      <div className={styles['nav-area']}>
+      <div className="nav-area" id="NavBar">
         <Navbar pages={pages} />
       </div>
     </>
