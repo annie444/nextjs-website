@@ -221,3 +221,22 @@ a {
 		color: white;
 	}
 }
+
+.grid-item {
+	min-width: 100%;
+	min-height: 100%;
+	cursor: pointer;
+	position: relative;
+	z-index: 1;
+	background-color: #fff;
+}
+
+.grid-item:hover {
+		opacity: 0.8;
+	}
+
+@media (prefers-color-scheme: dark) {
+	.grid-item {
+		background-color: #fff;
+	}
+}

@@ -37,10 +37,12 @@ async function main() {
           .processSync(matterResult.content)
 
         const mdx = await serialize(matterResult.content).then((data) => data)
+        const source = await serialize(fileContents).then((data) => data)
         return {
           slug,
           file,
           mdx,
+          source,
           ...matterResult,
         }
       })

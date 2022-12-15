@@ -40,6 +40,10 @@
   justify-content: flex-start;
   align-items: flex-start;
   overflow: visible;
+	padding-left: 6rem;
+  padding-right: 2rem;
+  padding-top: 4rem;
+  padding-bottom: 6rem;
 }
 
 .nav-area {

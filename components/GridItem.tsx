@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react'
 import anime from 'animejs'
-import styles from '../styles/GridItem.module.css'
 import React from 'react'
 import { type MouseEvent } from 'react'
 
@@ -58,7 +57,7 @@ export const GridItem = (props: propsType): JSX.Element => {
       {props.items.map((item: itemType) => {
         return (
           <div
-            className={styles['grid-item'] && 'grid-item'}
+            className="grid-item"
             id={item.id.toString()}
             key={item.i}
             onClick={clickHandler}

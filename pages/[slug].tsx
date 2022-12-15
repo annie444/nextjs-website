@@ -1,7 +1,8 @@
-import { MDXRemote } from 'next-mdx-remote'
+import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote'
 import React from 'react'
 import styles from '../styles/layout.module.css'
 import { Navbar } from '../components/NavBar'
+import { MDXProvider } from '@mdx-js/react'
 
 const url = 'https://annieehler.com'
 
@@ -10,6 +11,18 @@ interface Params {
 }
 
 interface Post {
+  slug: string
+  content: string
+  data: object
+  excerpt: string
+  file: {
+    cwd: string
+    data: object
+    history: Array<string>
+    messages: Array<string>
+    value: string
+  }
+  isEmpty: boolean
   mdx: {
     compiledSource: string
     frontmatter: {
@@ -17,7 +30,9 @@ interface Post {
       description: string
       date: string
     }
+    scope: object
   }
+  source: MDXRemoteSerializeResult
 }
 
 interface Page {
@@ -32,17 +47,9 @@ export default function Page({ post, pages }: { post: Post; pages: Page[] }) {
   return (
     <>
       <div className={styles['main-area']}>
-        <MDXRemote
-          compiledSource={post?.mdx.compiledSource ?? ''}
-          frontmatter={
-            post?.mdx.frontmatter ?? {
-              title: '',
-              description: '',
-              date: '',
-            }
-          }
-          lazy={true}
-        />
+        <MDXProvider>
+          <MDXRemote {...(post?.source ?? post?.mdx)} />
+        </MDXProvider>
       </div>
       <div className={styles['nav-area']}>
         <Navbar pages={pages} />
