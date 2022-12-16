@@ -23,15 +23,7 @@ interface Post {
     value: string
   }
   isEmpty: boolean
-  mdx: {
-    compiledSource: string
-    frontmatter: {
-      title: string
-      description: string
-      date: string
-    }
-    scope: object
-  }
+  mdx: MDXRemoteSerializeResult
   source: MDXRemoteSerializeResult
 }
 
@@ -46,9 +38,9 @@ interface Page {
 export default function Page({ post, pages }: { post: Post; pages: Page[] }) {
   return (
     <>
-      <div className={styles['main-area']}>
+      <div className={styles['main-area']} id="MainArea">
         <MDXProvider>
-          <MDXRemote {...(post?.source ?? post?.mdx)} />
+          <MDXRemote {...(post?.mdx ?? post?.source)} />
         </MDXProvider>
       </div>
       <div className="nav-area" id="NavBar">

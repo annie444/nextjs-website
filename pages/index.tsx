@@ -16,7 +16,7 @@ interface Post {
 export default function Page({ pages }: { pages: Post[] }) {
   return (
     <>
-      <div className={styles['main-area']}></div>
+      <div className={styles['main-area']} id="MainArea"></div>
       <div className="nav-area" id="NavBar">
         <Navbar pages={pages} />
       </div>
