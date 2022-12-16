@@ -15,10 +15,10 @@ export const getAllPosts = async () => {
 interface Post {
   slug?: string
   data?: {
-    title?: string
-    description?: string
-    date?: string
-    author?: string
+    Title?: string
+    Description?: string
+    Date?: string
+    Author?: string
   }
 }
 
@@ -30,10 +30,10 @@ const posts = async (req: NextApiRequest, res: NextApiResponse) => {
   const mappedData = data.map((post: Post) => {
     return {
       slug: post.slug ?? '',
-      title: post.data?.title ?? '',
-      description: post.data?.description ?? '',
-      date: post.data?.date ?? '',
-      author: post.data?.author ?? '',
+      title: post.data?.Title ?? '',
+      description: post.data?.Description ?? '',
+      date: post.data?.Date ?? '',
+      author: post.data?.Author ?? '',
     }
   })
   res.status(200).json(mappedData)
