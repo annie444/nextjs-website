@@ -1,37 +1,14 @@
-import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote'
+import { MDXRemote } from 'next-mdx-remote'
 import React from 'react'
 import { MDXProvider } from '@mdx-js/react'
 import Head from 'next/head'
-import { GetStaticPaths } from 'next'
-import { InferGetStaticPropsType, GetStaticProps } from 'next'
+import { InferGetServerSidePropsType, GetServerSideProps } from 'next'
 
 const url = 'https://annieehler.com'
 
-interface Post {
-  slug: string
-  content: string
-  data: {
-    title: string
-    description: string
-    date: string
-    author: string
-  }
-  excerpt: string
-  file: {
-    cwd: string
-    data: object
-    history: Array<string>
-    messages: Array<string>
-    value: string
-  }
-  isEmpty: boolean
-  mdx: MDXRemoteSerializeResult
-  source: MDXRemoteSerializeResult
-}
-
 export default function Page({
   post,
-}: InferGetStaticPropsType<typeof getStaticProps>) {
+}: InferGetServerSidePropsType<typeof getServerSideProps>) {
   return (
     <>
       <Head>
@@ -73,16 +50,7 @@ export default function Page({
   )
 }
 
-export const getStaticPaths: GetStaticPaths = async () => {
-  return {
-    paths: [],
-    fallback: 'blocking',
-  }
-}
-
-export const getStaticProps: GetStaticProps<{ post: Post }> = async (
-  context
-) => {
+export const getServerSideProps: GetServerSideProps = async (context) => {
   const post = await fetch(`${url}/api/resume/${context?.params?.slug}`)
     .then((res) => res.json())
     .catch(() => null)
@@ -101,6 +69,5 @@ export const getStaticProps: GetStaticProps<{ post: Post }> = async (
     props: {
       post,
     },
-    revalidate: 60,
   }
 }

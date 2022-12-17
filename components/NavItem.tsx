@@ -33,7 +33,7 @@ export const NavItem = ({
     }).then((res) => {
       // Do a fast client-side transition to the already prefetched dashboard page
       if (res.ok)
-        router.replace(`/${href}`, `/${href}`, {
+        router.replace(`/${href}`, undefined, {
           scroll: false,
           shallow: false,
         })
