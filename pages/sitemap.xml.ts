@@ -1,4 +1,4 @@
-const url = 'http://localhost:3000'
+const url = 'https://annieehler.com'
 
 export const getServerSideProps = async () => {
   // We make an API call to gather the URLs for our site
