@@ -1,0 +1,4 @@
+Sitemap: https://annieehler.com/sitemap.xml
+Sitemap: https://annieehler.com/api/sitemap.xml
+User-agent: *
+Allow: /
