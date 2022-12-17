@@ -84,7 +84,7 @@ export const NavItem = ({
               height: '100px',
             }}
           >
-            <Loading type="points" color="secondary" size="lg" />
+            <Loading type="points" color="primary" size="lg" />
           </div>
         )}
       </Collapse>
