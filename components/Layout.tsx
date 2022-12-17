@@ -1,5 +1,5 @@
 import dynamic from 'next/dynamic'
-import React from 'react'
+import React, { useCallback } from 'react'
 import styles from '../styles/layout.module.scss'
 import { NameAnimationMotion } from './NameAnimation'
 import { Navbar } from '../components/NavBar'
@@ -48,15 +48,17 @@ export const Layout = ({ children }: { children: React.ReactNode }) => {
     return () => {
       unsubWF()
     }
-  }, [WindowFollower, NameAnimationTransform, lastUpdate, springY])
+  }, [WindowFollower, NameAnimationTransform, lastUpdate, springY, now])
+
+  const resetAllOnResize = useCallback(() => {
+    NameAnimationTransform.set(0)
+    lastUpdate.set(0)
+    now.set(0)
+  }, [NameAnimationTransform, lastUpdate, now])
 
   useEffect(() => {
-    window.addEventListener('resize', () => {
-      NameAnimationTransform.set(0)
-      lastUpdate.set(0)
-      now.set(0)
-    })
-  }, [])
+    window.addEventListener('resize', resetAllOnResize)
+  }, [resetAllOnResize])
 
   const yTransform = useTransform(
     springY,

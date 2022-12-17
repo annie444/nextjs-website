@@ -23,22 +23,26 @@ export const NavItem = ({
   const [show, setShow] = useState(false)
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const handleClick = useCallback((e: any) => {
-    e.preventDefault()
-    // Start the page transition
-    NProgress.start()
+  const handleClick = useCallback(
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    (e: any) => {
+      e.preventDefault()
+      // Start the page transition
+      NProgress.start()
 
-    fetch(`/api/resume/${href}`, {
-      method: 'GET',
-    }).then((res) => {
-      // Do a fast client-side transition to the already prefetched dashboard page
-      if (res.ok)
-        router.replace(`/${href}`, undefined, {
-          scroll: false,
-          shallow: false,
-        })
-    })
-  }, [])
+      fetch(`/api/resume/${href}`, {
+        method: 'GET',
+      }).then((res) => {
+        // Do a fast client-side transition to the already prefetched dashboard page
+        if (res.ok)
+          router.replace(`/${href}`, undefined, {
+            scroll: false,
+            shallow: false,
+          })
+      })
+    },
+    [href, router]
+  )
 
   useEffect(() => {
     router.prefetch(`/${href}`)
