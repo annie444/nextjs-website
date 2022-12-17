@@ -1,8 +1,9 @@
+import dynamic from 'next/dynamic'
 import React from 'react'
-import { useRef, useEffect } from 'react'
 import styles from '../styles/layout.module.css'
 import { NameAnimationMotion } from './NameAnimation'
-import dynamic from 'next/dynamic'
+import { Navbar } from '../components/NavBar'
+import { useEffect, useRef } from 'react'
 import {
   motion,
   useScroll,
@@ -89,11 +90,6 @@ export const Layout = ({ children }: { children: React.ReactNode }) => {
 
   const yTemplate = useMotionTemplate`calc(${yTransform} + ${NameAnimationTransform}px)`
 
-  const handleHamburgerClick = () => {
-    document.getElementById('NavBar')?.classList.toggle('nav-on')
-    document.getElementById('MainArea')?.classList.toggle('main-off')
-  }
-
   return (
     <>
       <GridAnimation />
@@ -127,17 +123,11 @@ export const Layout = ({ children }: { children: React.ReactNode }) => {
           opacity: opacityTransform,
         }}
       >
-        <div ref={ResumeRef} className={styles['header-container']}>
-          <label
-            htmlFor="checkbox_toggle"
-            onClick={handleHamburgerClick}
-            className="hamburger"
-          >
-            &#9776;
-          </label>
-        </div>
+        <div ref={ResumeRef} className={styles['header-container']}></div>
         <div ref={MainContainerRef} className={styles['main-container']}>
-          {children}
+          <div className={styles['main-area']} id="MainArea">
+            <Navbar>{children}</Navbar>
+          </div>
         </div>
       </motion.div>
     </>

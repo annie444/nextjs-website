@@ -1,15 +1,11 @@
 import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote'
 import React from 'react'
-import styles from '../styles/layout.module.css'
-import { Navbar } from '../components/NavBar'
 import { MDXProvider } from '@mdx-js/react'
 import Head from 'next/head'
+import { GetStaticPaths } from 'next'
+import { InferGetStaticPropsType, GetStaticProps } from 'next'
 
 const url = 'https://annieehler.com'
-
-interface Params {
-  slug: string
-}
 
 interface Post {
   slug: string
@@ -33,15 +29,9 @@ interface Post {
   source: MDXRemoteSerializeResult
 }
 
-interface Page {
-  slug: string
-  title?: string
-  description?: string
-  date?: string
-  author?: string
-}
-
-export default function Page({ post, pages }: { post: Post; pages: Page[] }) {
+export default function Page({
+  post,
+}: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <>
       <Head>
@@ -76,42 +66,28 @@ export default function Page({ post, pages }: { post: Post; pages: Page[] }) {
           content="Annie Ehler Portfolio Resume"
         />
       </Head>
-      <div className={styles['main-area']} id="MainArea">
-        <MDXProvider>
-          <MDXRemote {...(post?.mdx ?? post?.source)} />
-        </MDXProvider>
-      </div>
-      <div className="nav-area" id="NavBar">
-        <Navbar pages={pages} />
-      </div>
+      <MDXProvider>
+        <MDXRemote {...(post?.mdx ?? post?.source)} />
+      </MDXProvider>
     </>
   )
 }
 
-export const getStaticPaths = async () => {
+export const getStaticPaths: GetStaticPaths = async () => {
   return {
     paths: [],
     fallback: 'blocking',
   }
 }
 
-export const getStaticProps = async (context: {
-  params: Params
-  preview?: boolean
-  previewData?: object
-  locale?: string
-  locales?: Array<string>
-  defaultLocale?: string
-}) => {
-  const post = await fetch(`${url}/api/resume/${context?.params.slug}`)
+export const getStaticProps: GetStaticProps<{ post: Post }> = async (
+  context
+) => {
+  const post = await fetch(`${url}/api/resume/${context?.params?.slug}`)
     .then((res) => res.json())
     .catch(() => null)
 
-  const pages = await fetch(`${url}/api/resume`)
-    .then((res) => res.json())
-    .catch(() => null)
-
-  if (!post || !pages) {
+  if (!post) {
     return {
       redirect: {
         destination: '/',
@@ -124,7 +100,6 @@ export const getStaticProps = async (context: {
   return {
     props: {
       post,
-      pages,
     },
     revalidate: 60,
   }

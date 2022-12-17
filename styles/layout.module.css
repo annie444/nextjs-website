@@ -25,6 +25,23 @@
 	float: right;
 }
 
+.input {
+	display: none;
+	cursor: pointer;
+	pointer-events: auto;
+}
+
+.hamburger {
+	display: none;
+	font-size: 24pt;
+	width: min-content;
+	padding-bottom: 9px;
+	padding-right: 18px;
+	user-select: none;
+	cursor: pointer;
+	pointer-events: auto;
+}
+
 .main-container {
 	height: calc(100% - 8rem);
   width: 100%;
@@ -39,7 +56,7 @@
 .main-area {
 	height: 100%;
   display: flex;
-	width: calc( 80% - 8rem );
+	width: calc( 100% - 8rem );
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
@@ -50,18 +67,60 @@
   padding-bottom: 6rem;
 }
 
+.nav-area {
+	height: calc(100vh - 8rem - 2px);
+	display: flex;
+	width: 20%;
+	flex-direction: column;
+	justify-content: space-evenly;
+	align-items: center;
+	overflow: visible;
+	position: sticky;
+	top: 8rem;
+	background: transparent;
+	border-left: 1px solid #000;
+	text-transform: capitalize;
+}
+
 @media (prefers-color-scheme: dark) {
+	.nav-area {
+		border-left: 1px solid #fff;
+	}
 	.header-container {
 		border: 1px solid #fff;
 	}
 }
 
 @media (max-width: 768px) {
+	.nav-area {
+		display: none;
+		width: 100%;
+		position: absolute;
+		top: 8rem;
+		background: #fff;
+		color: #000;
+	}
+
+	.hamburger {
+		display: block;
+		position: sticky;
+		top: 4rem;
+		right: 0;
+		display: block;
+		color: #000;
+	}
+
+	input[type=checkbox]:checked ~ .nav-area{
+		display: block;
+	}
+
 	.main-area {
 		width: 100%;
 		padding: 2rem;
 	}
 }
+
+
 
 @media (max-width: 480px) {
 	.main-area {

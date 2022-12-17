@@ -19,4 +19,7 @@ export default withMDX({
   sassOptions: {
     includePaths: [path.join(process.cwd(), 'styles')],
   },
+  experimental: {
+    runtime: 'experimental-edge',
+  },
 })

@@ -1,0 +1,26 @@
+@import './variables.scss';
+
+.nav-item {
+	font-size: 18pt;
+	position: relative;
+	transition: all 0.2s;
+	padding: 2px 20px;
+	cursor: 'pointer';
+	pointer-events: 'auto';
+	width: 100%;
+
+	&:hover {
+		font-weight: bold;
+	}
+	@media screen and (prefers-color-scheme: dark) {
+		color: #fff;
+		background-color: #000;
+	}
+}
+
+.active {
+	background-color: $g1;
+	color: $g2;
+	transition: all 0.2s;
+	@include text-effect-simple();
+}

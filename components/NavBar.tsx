@@ -1,37 +1,30 @@
-import { useState } from 'react'
 import { NavItem } from './NavItem'
 import React from 'react'
+import menu from '../public/cache/menu.json'
+import { Collapse } from '@nextui-org/react'
 
-interface Post {
-  slug: string
-  title?: string
-  description?: string
-  date?: string
-  author?: string
-}
-
-export const Navbar = ({ pages }: { pages: Post[] }): JSX.Element => {
+export const Navbar = ({
+  children,
+}: {
+  children: React.ReactNode
+}): JSX.Element => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [nav, setNavActive] = useState<boolean>()
-  const [activeIdx, setActiveIdx] = useState(0)
+  const pages = menu.data
 
   return (
     <>
-      {pages.map((page: Post, idx: number) => (
-        <div
-          onClick={() => {
-            setActiveIdx(idx)
-            setNavActive(false)
-          }}
-          key={idx}
-        >
+      <Collapse.Group splitted style={{ width: '100%' }}>
+        {pages.map((page, idx: number) => (
           <NavItem
-            active={activeIdx === idx}
-            text={page.title ?? page.slug}
+            text={page.data.Title ?? page.slug}
             href={page.slug}
-          />
-        </div>
-      ))}
+            idx={idx}
+            key={idx}
+          >
+            {children}
+          </NavItem>
+        ))}
+      </Collapse.Group>
     </>
   )
 }
