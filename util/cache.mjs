@@ -47,14 +47,23 @@ async function main() {
         }
       })
     ).then((data) => data)
-    console.log(content)
     // Return a big array of JSON
-    return JSON.stringify(content)
+    const json = JSON.stringify(content)
+    const data = content.map((item) => {
+      const slug = item.slug
+      const data = item.data
+      return { slug, data }
+    })
+    const menuItems = JSON.stringify({ data })
+    return {
+      json,
+      menuItems,
+    }
   }
 
   const allPosts = await getAll()
 
-  const postFileContents = `${allPosts}`
+  const postFileContents = `${allPosts.json}`
 
   // Create the cache folder if it doesn't exist
   try {
@@ -67,5 +76,10 @@ async function main() {
   fs.writeFile('public/cache/resume.json', postFileContents, (err) => {
     if (err) return console.log(err)
     console.log('Resume cache created')
+  })
+
+  fs.writeFile('public/cache/menu.json', allPosts.menuItems, (err) => {
+    if (err) return console.log(err)
+    console.log('Menu cache created')
   })
 }

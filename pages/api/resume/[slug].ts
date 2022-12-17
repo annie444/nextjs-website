@@ -1,5 +1,9 @@
-import { NextApiRequest, NextApiResponse } from 'next'
+import { NextRequest } from 'next/server'
 // import { createClient } from '@supabase/supabase-js'
+
+export const config = {
+  runtime: 'experimental-edge',
+}
 
 const url = 'https://annieehler.com'
 
@@ -14,17 +18,27 @@ export const getAllPosts = async () => {
 /**
  * Finds and returns a single post
  */
-const Resume = async (req: NextApiRequest, res: NextApiResponse) => {
-  const { slug } = req.query as { slug: string }
+const Resume = async (req: NextRequest) => {
+  const url = new URL(req.url)
+  const slug = url.pathname.split('/').pop()
   const data = (await getAllPosts()).find(
     (page: { slug: string }) => page.slug === slug
   )
   if (data) {
-    res.status(200).json(data)
-    res.end()
+    return new Response(JSON.stringify(data), {
+      status: 200,
+      headers: {
+        'Content-Type': 'application/json',
+        'cache-control': 'public, s-maxage=1200, stale-while-revalidate=600',
+      },
+    })
   } else {
-    res.status(404)
-    res.end()
+    return new Response(JSON.stringify({}), {
+      status: 404,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
   }
 }
 

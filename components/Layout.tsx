@@ -1,8 +1,9 @@
-import React from 'react'
-import { useRef, useEffect } from 'react'
-import styles from '../styles/layout.module.css'
-import { NameAnimationMotion } from './NameAnimation'
 import dynamic from 'next/dynamic'
+import React from 'react'
+import styles from '../styles/layout.module.scss'
+import { NameAnimationMotion } from './NameAnimation'
+import { Navbar } from '../components/NavBar'
+import { useEffect, useRef } from 'react'
 import {
   motion,
   useScroll,
@@ -20,6 +21,7 @@ export const Layout = ({ children }: { children: React.ReactNode }) => {
   })
   const WindowFollower = useScroll().scrollY
   const NameAnimationTransform = useMotionValue(0)
+  const now = useMotionValue(0)
   const springY = useSpring(scrollYProgress, {
     stiffness: 100,
     damping: 10,
@@ -33,11 +35,11 @@ export const Layout = ({ children }: { children: React.ReactNode }) => {
         lastUpdate.set(WindowFollower.get())
       }
       if (springY.get() <= 0) {
-        const now = WindowFollower.get()
+        now.set(WindowFollower.get())
         NameAnimationTransform.set(
-          NameAnimationTransform.get() + (now - lastUpdate.get())
+          NameAnimationTransform.get() + (now.get() - lastUpdate.get())
         )
-        lastUpdate.set(now)
+        lastUpdate.set(now.get())
       }
       if (NameAnimationTransform.get() < 0) {
         NameAnimationTransform.set(0)
@@ -47,6 +49,14 @@ export const Layout = ({ children }: { children: React.ReactNode }) => {
       unsubWF()
     }
   }, [WindowFollower, NameAnimationTransform, lastUpdate, springY])
+
+  useEffect(() => {
+    window.addEventListener('resize', () => {
+      NameAnimationTransform.set(0)
+      lastUpdate.set(0)
+      now.set(0)
+    })
+  }, [])
 
   const yTransform = useTransform(
     springY,
@@ -89,11 +99,6 @@ export const Layout = ({ children }: { children: React.ReactNode }) => {
 
   const yTemplate = useMotionTemplate`calc(${yTransform} + ${NameAnimationTransform}px)`
 
-  const handleHamburgerClick = () => {
-    document.getElementById('NavBar')?.classList.toggle('nav-on')
-    document.getElementById('MainArea')?.classList.toggle('main-off')
-  }
-
   return (
     <>
       <GridAnimation />
@@ -127,17 +132,11 @@ export const Layout = ({ children }: { children: React.ReactNode }) => {
           opacity: opacityTransform,
         }}
       >
-        <div ref={ResumeRef} className={styles['header-container']}>
-          <label
-            htmlFor="checkbox_toggle"
-            onClick={handleHamburgerClick}
-            className="hamburger"
-          >
-            &#9776;
-          </label>
-        </div>
+        <div ref={ResumeRef} className={styles['header-container']}></div>
         <div ref={MainContainerRef} className={styles['main-container']}>
-          {children}
+          <div className={styles['main-area']} id="MainArea">
+            <Navbar>{children}</Navbar>
+          </div>
         </div>
       </motion.div>
     </>

@@ -1,6 +1,8 @@
-import { NextApiRequest, NextApiResponse } from 'next'
-
 // You'll need to specify the absolute URL to fetch your file
+
+export const config = {
+  runtime: 'experimental-edge',
+}
 
 const url = 'https://annieehler.com'
 
@@ -25,7 +27,7 @@ interface Post {
 /**
  * Returns a list of paginated posts
  */
-const posts = async (req: NextApiRequest, res: NextApiResponse) => {
+const posts = async () => {
   const data = await getAllPosts().then((res) => res)
   const mappedData = data.map((post: Post) => {
     return {
@@ -36,8 +38,13 @@ const posts = async (req: NextApiRequest, res: NextApiResponse) => {
       author: post.data?.Author ?? '',
     }
   })
-  res.status(200).json(mappedData)
-  res.end()
+  return new Response(JSON.stringify(mappedData), {
+    status: 200,
+    headers: {
+      'Content-Type': 'application/json',
+      'cache-control': 'public, s-maxage=1200, stale-while-revalidate=600',
+    },
+  })
 }
 
 export default posts
