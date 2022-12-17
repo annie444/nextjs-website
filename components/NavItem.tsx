@@ -22,7 +22,9 @@ export const NavItem = ({
   const router = useRouter()
   const [show, setShow] = useState(false)
 
-  const handleClick = useCallback(() => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const handleClick = useCallback((e: any) => {
+    e.preventDefault()
     // Start the page transition
     NProgress.start()
 

@@ -1,8 +1,10 @@
-import { NextApiResponse } from 'next'
+export const config = {
+  runtime: 'experimental-edge',
+}
 
 const url = 'https://annieehler.com'
 
-export const getServerSideProps = async ({ res }: { res: NextApiResponse }) => {
+export const getServerSideProps = async () => {
   // We make an API call to gather the URLs for our site
   // Fetch our JSON file
   const posts = await fetch(`${url}/cache/resume.json`).then((res) =>
@@ -10,14 +12,12 @@ export const getServerSideProps = async ({ res }: { res: NextApiResponse }) => {
   )
   // Do something with your data!
   const sitemap = generateSiteMap(posts)
-  res.setHeader('Content-Type', 'text/xml')
-  // we send the XML to the browser
-  res.write(sitemap)
-  res.end()
-
-  return {
-    props: {},
-  }
+  return new Response(sitemap, {
+    status: 200,
+    headers: {
+      ContentType: 'text/xml',
+    },
+  })
 }
 
 function generateSiteMap(posts: { slug: string }[]) {
