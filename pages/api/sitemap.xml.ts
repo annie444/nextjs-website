@@ -16,25 +16,21 @@ const generateSiteMap = (posts: { slug: string }[]) => {
 		 				 <loc>${url}</loc>
 						 <lastmod>${`${yyyy}-${mm}-${dd}`}</lastmod>
 						 <changefreq>daily</changefreq>
-						 <priority>1</priority>
 			</url>
 			<url>
 					<loc>${url}/sitemap.xml</loc>
 					<lastmod>${`${yyyy}-${mm}-${dd}`}</lastmod>
 					<changefreq>daily</changefreq>
-					<priority>4</priority>
 			</url>
 			<url>
 					<loc>${url}/cache/resume.json</loc>
 					<lastmod>${`${yyyy}-${mm}-${dd}`}</lastmod>
 					<changefreq>monthly</changefreq>
-					<priority>5</priority>
 			</url>
 			<url>
 					<loc>${url}/api/resume</loc>
 					<lastmod>${`${yyyy}-${mm}-${dd}`}</lastmod>
 					<changefreq>monthly</changefreq>
-					<priority>4</priority>
 			</url>
      ${posts
        .map(({ slug }: { slug: string }) => {
@@ -43,13 +39,11 @@ const generateSiteMap = (posts: { slug: string }[]) => {
            <loc>${`${url}/${slug}`}</loc>
 					 <lastmod>${`${yyyy}-${mm}-${dd}`}</lastmod>
 					 <changefreq>daily</changefreq>
-					 <priority>2</priority>
        </url>
 			 <url>
 			 		<loc>${`${url}/api/${slug}`}</loc>
 					<lastmod>${`${yyyy}-${mm}-${dd}`}</lastmod>
 					<changefreq>monthly</changefreq>
-					<priority>3</priority>
 	 		</url>
      `
        })
