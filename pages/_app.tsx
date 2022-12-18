@@ -6,6 +6,9 @@ import { Layout } from '../components/Layout'
 import { NextUIProvider, createTheme } from '@nextui-org/react'
 import { useRouter } from 'next/router'
 import { ThemeProvider } from 'next-themes'
+import Script from 'next/script'
+import { useEffect } from 'react'
+import * as gtag from '../util/gtag'
 
 export default function App({ Component, pageProps }: AppProps) {
   // Use the layout defined at the page level, if available
@@ -67,8 +70,35 @@ export default function App({ Component, pageProps }: AppProps) {
     },
   })
 
+  useEffect(() => {
+    const handleRouteChange = (url: string) => {
+      gtag.pageview(url)
+    }
+    router.events.on('routeChangeComplete', handleRouteChange)
+    return () => {
+      router.events.off('routeChangeComplete', handleRouteChange)
+    }
+  }, [router.events])
+
   return (
     <>
+      <Script
+        strategy="afterInteractive"
+        src={`https://www.googletagmanager.com/gtag/js?id=G-${gtag.GA_MEASUREMENT_ID}`}
+      />
+      <Script
+        id="google-analytics"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{
+          __html: `
+				window.dataLayer = window.dataLayer || [];
+				function gtag(){dataLayer.push(arguments);}
+				gtag('js', new Date());
+				gtag('config', 'G-${gtag.GA_MEASUREMENT_ID}', {
+					page_path: window.location.pathname,
+				})`,
+        }}
+      />
       <ThemeProvider
         defaultTheme="system"
         attribute="class"

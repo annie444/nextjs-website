@@ -34,6 +34,6 @@
     "lib/cache.mjs",
     "app/sitemap.xml.ts",
     "newrelic.js"
-  ],
+, "util/gtag.js"  ],
   "exclude": ["node_modules"]
 }
