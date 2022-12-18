@@ -84,7 +84,7 @@ export default function App({ Component, pageProps }: AppProps) {
     <>
       <Script
         strategy="afterInteractive"
-        src={`https://www.googletagmanager.com/gtag/js?id=G-${gtag.GA_MEASUREMENT_ID}`}
+        src={`https://www.googletagmanager.com/gtag/js?id=G-TDYEKMHM9B`}
       />
       <Script
         id="google-analytics"
@@ -94,7 +94,7 @@ export default function App({ Component, pageProps }: AppProps) {
 				window.dataLayer = window.dataLayer || [];
 				function gtag(){dataLayer.push(arguments);}
 				gtag('js', new Date());
-				gtag('config', 'G-${gtag.GA_MEASUREMENT_ID}', {
+				gtag('config', 'G-TDYEKMHM9B', {
 					page_path: window.location.pathname,
 				})`,
         }}
