@@ -92,6 +92,14 @@ export const Layout = ({ children }: { children: React.ReactNode }) => {
     [0, 1]
   )
 
+  const reverseOpacityTransform = useTransform(
+    springY,
+    // Map x from these values:
+    [1, 0.6],
+    // Into these values:
+    [1, 0]
+  )
+
   const GridAnimation = dynamic(
     () => import('./GridAnimation').then((mod) => mod.GridAnimation),
     {
@@ -117,6 +125,7 @@ export const Layout = ({ children }: { children: React.ReactNode }) => {
           alignContent: 'center',
           flexWrap: 'wrap',
           justifyContent: 'center',
+          zIndex: 4,
         }}
       >
         <NameAnimationMotion
@@ -126,6 +135,10 @@ export const Layout = ({ children }: { children: React.ReactNode }) => {
             scale: scaler,
           }}
         />
+        <motion.div
+          className="arrow bounce"
+          style={{ opacity: reverseOpacityTransform }}
+        ></motion.div>
       </motion.div>
 
       <motion.div
